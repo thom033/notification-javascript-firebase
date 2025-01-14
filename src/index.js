@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+import { getMessaging, getToken } from "firebase/messaging";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,6 +18,13 @@ const firebaseConfig = {
   measurementId: "G-3F66RB5KXP"
 };
 const auth = getAuth(firebaseConfig);
+
+// Initialize Firebase Cloud Messaging and get a reference to the service
+// const messaging = getMessaging(firebaseConfig);
+
+const messaging = getMessaging();
+// Add the public key generated from the console here.
+getToken(messaging, {vapidKey: "BJkkQko2fzqq8Eib5s-6G4E37IaGAvOBifpP-EO6HlwsbtbgR2I1l0Y2Smv-OnVzLZe6I90if1YPdoCCLzwOUuI"});
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
